@@ -72,9 +72,9 @@
         depositBtn.addEventListener("click", function(){
             const depositNumber = getInputNumber("deposit-amount");
 
-            UpdateSpanTagForDeposit("curr-depo",depositNumber);
+            UpdateSpanTa("curr-depo",depositNumber);
 
-            UpdateSpanTagForDeposit("curr-bal",depositNumber);
+            UpdateSpanTag("curr-bal",depositNumber);
 
             document.getElementById("deposit-amount").value = "";
         })
@@ -83,23 +83,16 @@
         withdrawBtn.addEventListener("click",function(){
             const withdrawAmount = getInputNumber("withdraw-amount");
 
-            UpdateSpanTagForDeposit("curr-with",withdrawAmount);
+            UpdateSpanTag("curr-with",withdrawAmount);
 
-            UpdateSpanTagForWithdraw("curr-bal",withdrawAmount);
+            UpdateSpanTag("curr-bal", -1 * withdrawAmount);
 
             document.getElementById("withdraw-amount").value = "";
         })
-        function UpdateSpanTagForDeposit(id,depositNumber){
+        function UpdateSpanTag(id,depositNumber){
             const Bal = document.getElementById(id).innerText;
             const BalNum = parseFloat(Bal);
             const final = BalNum + depositNumber;
-            document.getElementById(id).innerText = final;
-        }
-
-        function UpdateSpanTagForWithdraw(id,depositNumber){
-            const Bal = document.getElementById(id).innerText;
-            const BalNum = parseFloat(Bal);
-            const final = BalNum - depositNumber;
             document.getElementById(id).innerText = final;
         }
 
